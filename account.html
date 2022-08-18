@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Ranchers&display=swap" rel="stylesheet">
+	<title>Login/Register- GITStore</title>
+	<link rel="stylesheet" href="style.css"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+	<div class="logo">
+ <a href="index.html"><img src="images/logo.png" width="125px"></a>
+	</div>
+	<nav>
+    	<ul id="MenuItems">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="Product.html">Products</a></li>
+			<li><a href="http://www.git.edu/">About</a></li>
+			<li><a href="http://www.git.edu/">Contact</a></li>
+            <li><a href="account.html">Account</a></li>  
+        </ul>
+    </nav>
+   <a href="Cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+    <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+</div>
+</div>
+  
+    
+<!-----account page----->
+    <div class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="images/image1.png" width="100%">
+                </div>
+                  <div class="col-2">
+                        <div class="form-container">
+                            <div class="form-btn">
+                                <span onclick="login()">Login</span>
+                                <span onclick="register()" >Register</span>
+                                <hr id="Indicator">
+                            </div>
+                            <form id="LoginForm" onsubmit="return validatelogin()" action="index.html">
+                                <input type="text" id="uname" placeholder="Username">
+                                <input type="password" id="pass" placeholder="Password">
+                                <button type="submit"  class="btn">Login</button>
+                                
+                                
+                            </form>
+                            
+                             <form id="RegForm"  onsubmit="return validateregister()" action="index.html">
+                                <input type="text" id="uname1" placeholder="Username">
+                                <input type="email" id="email1" placeholder="Email">
+                                <input type="password" id="pass1" placeholder="Password">
+                                <button type="submit" class="btn">Register</button>
+                               
+                            </form>
+                
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    
+<!-----footer----->
+    <div class="footer">
+        <div class="container" >
+            <div class="row">
+                <div class="footer-col-1" >
+                    <h3>Download our app</h3>
+                    <p>Download App for Android and ios.<p>
+                    <div class="app logo">
+                   <a href="https://play.google.com/store?hl=en_IN"><img src="images/play-store.png" width="50%">  </a>
+                        <a href="https://www.apple.com/ios/app-store/"><img src="images/app-store.png" width="50%">   </a>
+                    </div>
+                    
+                     </div>
+                 <div class="footer-col-2"> 
+                     <h3>Follow us</h3>
+                     <ul>
+                         <li><a href="http://www.facebook.com">Facebook</a></li>
+                         <li><a href="http://www.twitter.com">Twitter</a></li>
+                         <li><a href="http://www.instagram.com">Instagram</a></li>
+                         <li><a href="http://www.youtube.com">Youtube</a></li>
+                     </ul>
+                     </div>
+                </div>
+            </div>
+        <hr>
+                <p class="Copyright">Copyright 2020</p>
+        </div>
+    
+     
+    
+
+    
+    <!-----js for toggle form---->
+    <script>
+    var LoginForm= document.getElementById("LoginForm");
+    var RegForm= document.getElementById("RegForm");
+    var Indicator= document.getElementById("Indicator");
+       
+        function register()
+        {
+            RegForm.style.transform="translateX(0px)";       
+            LoginForm.style.transform="translateX(0px)";
+            Indicator.style.transform="translateX(100px)";
+        }
+        
+        function login()
+        {
+            RegForm.style.transform="translateX(300px)"; 
+            LoginForm.style.transform="translateX(300px)";
+            Indicator.style.transform="translateX(0px)";
+        }
+        
+
+        
+        function validateregister()
+        {
+            var Username= document.getElementById("uname1");
+            var Email= document.getElementById("email1");
+            var Password= document.getElementById("pass1");
+ 
+            if(Username.value.trim() == "")
+                {
+                    alert("Blank Username");
+                    Username.style.border = "solid 3px red";
+                    return false;
+                }
+            if(!isNaN(Username.value)) 
+                {
+                    alert("Username cannot be all numbers");
+                    Username.style.border = "solid 3px red";
+                    return false;
+                }
+            else if(Email.value== "")
+            {
+                alert("Blank Email");
+                Email.style.border = "solid 3px red";
+                    return false;     
+            }
+            else if(Password.value.trim() == "")
+            {
+                alert("Blank Password");
+                Password.style.border = "solid 3px red";
+                    return false;     
+            }
+            else if(Password.value.trim().length<5)
+                {
+                    alert("Password too short");
+                    Password.style.border = "solid 3px red";
+                    return false;
+                    
+                }
+            else if(Password.value.trim().length>20)
+                {
+                    alert("Password too long");
+                    Password.style.border = "solid 3px red";
+                    return false;
+                    
+                }
+            else
+                {
+                    return true;
+                }
+        }
+        
+        
+       
+        function validatelogin()
+        {
+            var Username= document.getElementById("uname");
+            var Password= document.getElementById("pass");
+            
+            if(Username.value.trim() == "")
+                {
+                    alert("Blank Username");
+                    Username.style.border = "solid 3px red";
+                    return false;
+                }
+            if(Username.value=="Deepak Kumble")
+                {
+                    alert("Valid Username");
+                }
+             else{
+                alert("Invalid Username");
+                return false;
+                }
+            if(Password.value=="deepakkumble22")
+                {
+                    alert("Valid Password");
+                }
+            else
+                {
+                    alert("Invalid password");
+                return false;
+                }
+        }
+        
+        
+         
+    </script>
+</body>
+</html>
